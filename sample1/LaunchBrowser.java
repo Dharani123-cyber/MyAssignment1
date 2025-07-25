@@ -15,36 +15,45 @@ public class LaunchBrowser {
 		opt.addArguments("guest");
 
 		ChromeDriver driver = new ChromeDriver(opt);
-		driver.get("http://leaftaps.com/opentaps/control/main");
+		driver.get("https://www.saucedemo.com/v1/");
 		driver.manage().window().maximize();
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-		// Id
-		WebElement element = driver.findElement(By.id("username")); //30-1 29
-		element.sendKeys("demo");//30-25 5
-		element.clear();//30 0.1
 		
-		Thread.sleep(3000);
-		element.sendKeys("demosalesmanager");//30
+		driver.findElement(By.xpath("//input[@name='user-name']")).sendKeys("problem_user");
+		driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("secret_sauce");
 		
-		driver.findElement(By.name("PASSWORD")).sendKeys("crmsfa");
-		String text = driver.findElement(By.tagName("label")).getText();
-		System.out.println(text);
-		driver.findElement(By.partialLinkText("CR")).click();
-		driver.findElement(By.linkText("Leads")).click();
-		driver.findElement(By.partialLinkText("Create Lead")).click();
-		WebElement username=driver.findElement(By.id("createLeadForm_companyName"));
+		driver.findElement(By.xpath("//input[@value='LOGIN']")).click();
+		driver.findElement(By.xpath("//button[text()='ADD TO CART']")).click();
+		driver.findElement(By.xpath("//span[text()='1']")).click();
 		
 		
-		username.sendKeys("vishwanathan");
-		username.clear();
-		username.sendKeys("testleaf");
+		WebElement name=driver.findElement(By.xpath("//div[text()='Sauce Labs Backpack']"));
+		name.getText();
+		System.out.println("Sauce Labs Backpack");
 		
 		
-		driver.findElement(By.id("createLeadForm_firstName")).sendKeys("M");
-		driver.findElement(By.id("createLeadForm_lastName")).sendKeys("dharani");
-	
+		WebElement price=driver.findElement(By.xpath("//div[text()='29.99']"));
+		price.getText();
+		System.out.println("29.99");
+		
+		
+		driver.findElement(By.xpath("//a[text()='CHECKOUT']")).click();
+		driver.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys("dharani");
+		driver.findElement(By.xpath("//input[@data-test='lastName']")).sendKeys("dharani");
+		driver.findElement(By.xpath("//input[contains(@placeholder,'Zip/Postal')]")).sendKeys("605766");
+		driver.findElement(By.xpath("//input[@type='submit']")).click();
+		driver.findElement(By.xpath("//a[text()='FINISH']")).click();
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		
