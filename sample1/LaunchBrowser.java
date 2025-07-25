@@ -45,6 +45,7 @@ public class LaunchBrowser {
 		driver.findElement(By.xpath("//input[contains(@placeholder,'Zip/Postal')]")).sendKeys("605766");
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 		driver.findElement(By.xpath("//a[text()='FINISH']")).click();
+		driver.close();
 		
 		
 		
