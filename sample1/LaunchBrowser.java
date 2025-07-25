@@ -45,6 +45,20 @@ public class LaunchBrowser {
 		driver.findElement(By.xpath("//input[contains(@placeholder,'Zip/Postal')]")).sendKeys("605766");
 		driver.findElement(By.xpath("//input[@type='submit']")).click();
 		driver.findElement(By.xpath("//a[text()='FINISH']")).click();
+		File src=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	
+		
+		File dest=new File("screenshot.png");
+		
+		try {
+			FileHandler.copy(src, dest);
+			System.out.println("Screenshot saved successfully");
+		}
+		catch(IOException e) {
+			System.out.println("Error saving screenshot:" + e.getMessage());
+			
+			
+		}
 		driver.quit();
 		
 		
